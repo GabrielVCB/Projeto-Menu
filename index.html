@@ -1,14 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Menu Online</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Cardápio Online</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h1 { text-align: center; }
+    .produto { margin-bottom: 10px; }
+    #admin-btn { position: fixed; top: 10px; right: 10px; }
+  </style>
 </head>
 <body>
   <h1>Cardápio</h1>
-  <div id="menu-container"></div>
-  <script src="menu.js"></script>
+  <div id="lista-produtos"></div>
+  <button id="admin-btn">Modo Admin</button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      fetch('http://localhost:3000/produtos')
+        .then(res => res.json())
+        .then(produtos => {
+          const container = document.getElementById('lista-produtos');
+          produtos.forEach(p => {
+            const div = document.createElement('div');
+            div.className = 'produto';
+            div.textContent = `${p.nome} - R$ ${p.preco.toFixed(2)}`;
+            container.appendChild(div);
+          });
+        });
+
+      document.getElementById('admin-btn').addEventListener('click', () => {
+        const senha = prompt("Digite a senha do administrador:");
+        if (senha === '1234') window.location.href = 'admin.html';
+        else alert('Senha incorreta!');
+      });
+    });
+  </script>
 </body>
 </html>

@@ -1,26 +1,74 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Modo Administrador</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    h1 { text-align: center; }
+    .produto { margin-bottom: 10px; }
+    input { margin: 5px; }
+  </style>
 </head>
 <body>
   <h1>Modo Administrador</h1>
-  <form id="product-form">
-    <input type="text" id="nome" placeholder="Nome do Produto" required />
-    <input type="number" id="preco" step="0.01" placeholder="Preço" required />
-    <select id="categoria">
-      <option value="lanches">Lanches</option>
-      <option value="bebidas">Bebidas</option>
-    </select>
-    <button type="submit">Salvar</button>
-  </form>
+  <div id="produtos"></div>
+  <hr>
+  <h2>Adicionar Produto</h2>
+  <input type="text" id="novo-nome" placeholder="Nome">
+  <input type="number" id="novo-preco" placeholder="Preço">
+  <button onclick="adicionarProduto()">Adicionar</button>
 
-  <h2>Produtos Cadastrados</h2>
-  <ul id="lista-produtos"></ul>
+  <script>
+    function carregarProdutos() {
+      fetch('http://localhost:3000/produtos')
+        .then(res => res.json())
+        .then(produtos => {
+          const div = document.getElementById('produtos');
+          div.innerHTML = '';
+          produtos.forEach(p => {
+            div.innerHTML += `
+              <div class="produto">
+                <input value="${p.nome}" id="nome-${p.id}"/>
+                <input type="number" value="${p.preco}" id="preco-${p.id}"/>
+                <button onclick="editar(${p.id})">Salvar</button>
+                <button onclick="excluir(${p.id})">Excluir</button>
+              </div>
+            `;
+          });
+        });
+    }
 
-  <script src="admin.js"></script>
+    function editar(id) {
+      const nome = document.getElementById(`nome-${id}`).value;
+      const preco = parseFloat(document.getElementById(`preco-${id}`).value);
+      fetch(`http://localhost:3000/produtos/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, preco })
+      }).then(() => carregarProdutos());
+    }
+
+    function excluir(id) {
+      fetch(`http://localhost:3000/produtos/${id}`, { method: 'DELETE' })
+        .then(() => carregarProdutos());
+    }
+
+    function adicionarProduto() {
+      const nome = document.getElementById('novo-nome').value;
+      const preco = parseFloat(document.getElementById('novo-preco').value);
+      fetch('http://localhost:3000/produtos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, preco })
+      }).then(() => {
+        document.getElementById('novo-nome').value = '';
+        document.getElementById('novo-preco').value = '';
+        carregarProdutos();
+      });
+    }
+
+    carregarProdutos();
+  </script>
 </body>
 </html>
