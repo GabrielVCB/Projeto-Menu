@@ -81,3 +81,10 @@ body {
     color: #442d00;
   }
   
+  .logo {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  
