@@ -1,0 +1,98 @@
+body {
+  font-family: "Inter", sans-serif;
+  background: #fefefe;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+.cardapio {
+  max-width: 800px;
+  margin: auto;
+  border: 1px solid #ccc;
+  padding: 20px;
+  background: white;
+  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+}
+
+.categorias {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.coluna {
+  flex: 1;
+  min-width: 300px;
+}
+
+.titulo {
+  background: #f9c700;
+  padding: 8px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #000;
+  margin-bottom: 10px;
+  border-radius: 8px;
+}
+
+.itens {
+  list-style: none;
+  padding: 0;
+}
+
+.itens li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px dashed #ccc;
+}
+
+.itens li span {
+  color: #c9952f;
+}
+
+.extras {
+  margin-top: 20px;
+  background: #fff7dc;
+  padding: 10px;
+  border: 2px solid #f9c700;
+  border-radius: 10px;
+}
+
+.extras h2 {
+  font-size: 1.5rem;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ffd975;
+}
+
+.extras ul {
+  list-style: none;
+  padding: 0;
+}
+
+.extras li {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px dashed #ccc;
+}
+
+.extras li span {
+  color: #b8860b;
+}
+
+footer {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: bold;
+  color: #442d00;
+}
+
+.logo {
+  width: 200px;
+  display: block;
+  margin: 0 auto;
+}

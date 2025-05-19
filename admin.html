@@ -1,25 +1,50 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Administração</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>Modo Administrador</h1>
-  <div id="admin-container"></div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Administração</title>
+    <link rel="stylesheet" href="./css/admin.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="admin-container"></div>
 
-  <h2>Adicionar Produto</h2>
-  <form id="add-form">
-    <input type="text" id="nome" placeholder="Nome" required>
-    <input type="number" id="preco" placeholder="Preço" required>
-    <button type="submit">Adicionar</button>
-  </form>
+    <div class="main">
+      <div class="form-admin">
+        <h1>Modo Administrador</h1>
 
-  <button id="voltar">Voltar ao Cardápio</button>
+        <h2>Adicionar Produto</h2>
+        <form id="add-form">
+          <div class="form-inputs">
+            <label for="nome">Nome do Produto</label>
+            <input
+              type="text"
+              id="nome"
+              placeholder="Digite o nome do produto"
+              required
+            />
+          </div>
+          <div class="form-inputs">
+            <label for="preco">Preço (R$)</label>
+            <input type="number" id="preco" placeholder="0,00" required />
+          </div>
+        </form>
 
-  <script src="storage.js"></script>
-  <script src="admin.js"></script>
-</body>
+        <div class="input-buttons">
+          <button type="submit">Adicionar</button>
+          <button id="voltar">
+            <a href="index.html">Voltar ao Cardápio</a>
+          </button>
+        </div>
+      </div>
+    </div>
+    <script src="storage.js"></script>
+    <script src="./js/admin.js"></script>
+  </body>
 </html>
