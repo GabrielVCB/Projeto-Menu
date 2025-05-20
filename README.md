@@ -3,7 +3,7 @@
 Bem-vindo ao repositório do **Cardápio Digital da Lanchonete do Abner**!  
 Este projeto tem como objetivo modernizar o atendimento da lanchonete, oferecendo aos clientes uma maneira prática de visualizar o cardápio através de um **QR code**, enquanto o administrador pode **gerenciar os itens do cardápio** de forma simples e segura por meio de um painel exclusivo.
 
-🌐 **Acesse o cardápio online:** [Lanchonete do Abner](projeto-menu-xi.vercel.app)
+🌐 **Acesse o cardápio online:** [Lanchonete do Abner](https://projeto-menu-xi.vercel.app/)
 
 ---
 
