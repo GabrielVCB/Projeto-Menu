@@ -1,6 +1,6 @@
 # 📱 Cardápio Digital – Lanchonete Sabor a Mezza
 
-Bem-vindo ao repositório do **Cardápio Digital da Lanchonete do Abner**!  
+Bem-vindo ao repositório do **Cardápio Digital da Lanchonete Sabor a Mezza**!  
 Este projeto tem como objetivo modernizar o atendimento da lanchonete, oferecendo aos clientes uma maneira prática de visualizar o cardápio através de um **QR code**, enquanto o administrador pode **gerenciar os itens do cardápio** de forma simples e segura por meio de um painel exclusivo.
 
 🌐 **Acesse o cardápio online:**  [Menu](https://projeto-menu-xi.vercel.app/)
