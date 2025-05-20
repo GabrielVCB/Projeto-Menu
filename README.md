@@ -111,11 +111,17 @@ Ideal para pequenos comércios que desejam oferecer um atendimento moderno e dig
 
 ## 📸 Páginas Desenvolvidas
 
-**Qrcode:**
-![Qrcode](assets/images/qrcode.png)
+## Qrcode
 
-**Menu:**
-![Menu](assets/images/Menu.png)
+<p align="center">
+  <img src="assets/images/qrcode.png" alt="Qrcode" width="400"/>
+</p>
+
+## Menu
+<p align="center">
+  <img src="assets/images/Menu.png" alt="Menu" width="400"/>
+</p>
+
 ---
 
 ## ✅ Status do Projeto
