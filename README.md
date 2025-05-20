@@ -111,9 +111,12 @@ Ideal para pequenos comércios que desejam oferecer um atendimento moderno e dig
 
 ## 📸 Páginas Desenvolvidas
 
+**Qrcode:**
 ![Qrcode](assets/images/qrcode.png)
 
+**Menu:**
 ![Menu](assets/images/Menu.png)
+---
 
 ## ✅ Status do Projeto
 
