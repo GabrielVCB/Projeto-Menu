@@ -22,7 +22,7 @@ Este projeto tem como objetivo modernizar o atendimento da lanchonete, oferecend
 
 - 📋 **Backlog no Trello:** [Acessar Trello](https://trello.com/invite/b/6807e89191cba0906afc21f5/ATTI8e254b05ecb2bb91307443cad7dcc508D2C13218/projeto-aps)
 - 🎨 **Protótipo no Figma:** [Acessar Figma](https://www.figma.com/design/fqoD4zycqm822DsThk4hmY/Lanchonete-Abner?node-id=0-1&p=f&t=QAm4ceR15xu9nmwI-0)
-- 🎥 **Apresentação (Screencast):** [Ver vídeo no YouTube](link)
+- 🎥 **Apresentação (Screencast):** [Ver vídeo no YouTube](https://youtu.be/HPyJrhCvtDk)
 - 📍 **Diagrama de atividades do sistema:** [Ver diagrama](https://lucid.app/lucidchart/e6580c26-daf6-4259-97f9-1dbdb381973f/edit?invitationId=inv_76da1395-38d8-480e-a17b-e21db8b3b665&page=0_0#)
 
 ---
@@ -128,6 +128,12 @@ Ideal para pequenos comércios que desejam oferecer um atendimento moderno e dig
 </p>
 
 ---
+
+## Issue / bug tracker
+  No começo, foi encontrada uma dificuldade na primeira versão do projeto, no que se diz a exibição e edição do cardápio online. Foi utilizado a tecnologia de localStorage, que mais tarde se tornou ineficiente de acordo com o proposto do projeto, já que é proposto a manipulação direta do menu que é público, visto que o localStorage só interfere na máquina local.
+
+## Evidência de programação em pares
+
 
 ## ✅ Status do Projeto
 
