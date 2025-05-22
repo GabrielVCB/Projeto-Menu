@@ -137,7 +137,7 @@ Ideal para pequenos comércios que desejam oferecer um atendimento moderno e dig
 ## Evidência de programação em pares
 
 <p align="center">
-  <img src="assets/images/discord.jpg" alt="Call" width="200"/>
+  <img src="assets/images/discord.jpg" alt="Call" width="400"/>
 </p>
   
 ---
