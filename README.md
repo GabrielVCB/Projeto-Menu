@@ -130,14 +130,14 @@ Ideal para pequenos comércios que desejam oferecer um atendimento moderno e dig
 ---
 
 ## Issue / bug tracker
-  No começo, foi encontrada uma dificuldade na primeira versão do projeto, no que se diz a exibição e edição do cardápio online. Foi utilizado a tecnologia de localStorage, que mais tarde se tornou ineficiente de acordo com o proposto do projeto, já que é proposto a manipulação direta do menu que é público, visto que o localStorage só interfere na máquina local.
+  No começo, foi encontrada uma dificuldade na primeira versão do projeto, no que se diz a exibição e edição do cardápio online. Foi utilizado a tecnologia de localStorage, que mais tarde se tornou ineficiente de acordo com o objetivo do projeto, já que é proposto a manipulação direta do menu que é público, visto que o localStorage só interfere na máquina local.
 
 ---
 
 ## Evidência de programação em pares
 
 <p align="center">
-  <img src="assets/images/discord.png" alt="Qrcode" width="200"/>
+  <img src="assets/images/discord.Jng" alt="Call" width="200"/>
 </p>
   
 ---
