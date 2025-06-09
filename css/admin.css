@@ -91,6 +91,7 @@ form input[type="number"] {
   border: none;
   color: #fff;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .input-buttons button:last-child {
