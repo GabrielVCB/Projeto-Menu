@@ -13,6 +13,12 @@
     />
   </head>
   <body>
+    <div class="admin-buttons" id="admin-buttons" style="display: none">
+      <button onclick="window.location.href='admin.html'" class="admin-btn">
+        Gerenciar Produtos
+      </button>
+      <button onclick="logout()" class="admin-btn">Sair</button>
+    </div>
     <div class="cardapio">
       <header>
         <img src="./assets/images/logonome.jpg" alt="Logo" class="logo" />
@@ -21,51 +27,189 @@
         <div class="coluna">
           <h2 class="titulo">LANCHES</h2>
           <ul class="itens">
-            <li>Coxinha <span>R$ 7,00</span></li>
-            <li>Coxinha Frango + Requeijão <span>R$ 8,00</span></li>
-            <li>Coxinha Charque <span>R$ 10,00</span></li>
-            <li>Croissant <span>R$ 9,00</span></li>
-            <li>Empada de Bacalhau <span>R$ 10,00</span></li>
-            <li>Empada de Frango <span>R$ 9,00</span></li>
-            <li>Pão Delícia <span>R$ 9,00</span></li>
-            <li>Esfirra <span>R$ 9,00</span></li>
-            <li>Hambúrguer <span>R$ 8,00</span></li>
-            <li>Cachorro Quente <span>R$ 8,00</span></li>
-            <li>Sanduíche Misto <span>R$ 7,00</span></li>
-            <li>Sanduíche Natural <span>R$ 14,00</span></li>
-            <li>Tapioca <span>R$ 10,00</span></li>
-            <li>Salada de Fruta <span>R$ 9,00</span></li>
-            <li>Fatia de Bolo <span>R$ 9,00</span></li>
+            <li>Coxinha <span class="preco-produto">R$ 7,00</span></li>
+            <li>
+              Coxinha Frango + Requeijão
+              <span class="preco-produto">R$ 8,00</span>
+            </li>
+            <li>Coxinha Charque <span class="preco-produto">R$ 10,00</span></li>
+            <li>Croissant <span class="preco-produto">R$ 9,00</span></li>
+            <li>
+              Empada de Bacalhau <span class="preco-produto">R$ 10,00</span>
+            </li>
+            <li>Empada de Frango <span class="preco-produto">R$ 9,00</span></li>
+            <li>Pão Delícia <span class="preco-produto">R$ 9,00</span></li>
+            <li>Esfirra <span class="preco-produto">R$ 9,00</span></li>
+            <li>Hambúrguer <span class="preco-produto">R$ 8,00</span></li>
+            <li>Cachorro Quente <span class="preco-produto">R$ 8,00</span></li>
+            <li>Sanduíche Misto <span class="preco-produto">R$ 7,00</span></li>
+            <li>
+              Sanduíche Natural <span class="preco-produto">R$ 14,00</span>
+            </li>
+            <li>Tapioca <span class="preco-produto">R$ 10,00</span></li>
+            <li>Salada de Fruta <span class="preco-produto">R$ 9,00</span></li>
+            <li>Fatia de Bolo <span class="preco-produto">R$ 9,00</span></li>
+            <!-- Produtos adicionados pelo admin serão inseridos aqui -->
+            <div id="lanches-admin"></div>
           </ul>
         </div>
         <div class="coluna">
           <h2 class="titulo">BEBIDAS</h2>
           <ul class="itens">
-            <li>Água <span>R$ 2,00</span></li>
-            <li>Água Indaiá <span>R$ 3,00</span></li>
-            <li>Água com Gás <span>R$ 4,00</span></li>
-            <li>Café Pequeno <span>R$ 2,00</span></li>
-            <li>Café Grande <span>R$ 3,00</span></li>
-            <li>Café com Leite <span>R$ 4,00</span></li>
-            <li>Suco <span>R$ 6,00</span></li>
-            <li>Suco com Leite <span>R$ 7,00</span></li>
-            <li>Refrigerante Mini <span>R$ 4,00</span></li>
-            <li>Refrigerante Lata <span>R$ 6,00</span></li>
-            <li>H2O Limoneto <span>R$ 6,00</span></li>
+            <li>Água <span class="preco-produto">R$ 2,00</span></li>
+            <li>Água Indaiá <span class="preco-produto">R$ 3,00</span></li>
+            <li>Água com Gás <span class="preco-produto">R$ 4,00</span></li>
+            <li>Café Pequeno <span class="preco-produto">R$ 2,00</span></li>
+            <li>Café Grande <span class="preco-produto">R$ 3,00</span></li>
+            <li>Café com Leite <span class="preco-produto">R$ 4,00</span></li>
+            <li>Suco <span class="preco-produto">R$ 6,00</span></li>
+            <li>Suco com Leite <span class="preco-produto">R$ 7,00</span></li>
+            <li>
+              Refrigerante Mini <span class="preco-produto">R$ 4,00</span>
+            </li>
+            <li>
+              Refrigerante Lata <span class="preco-produto">R$ 6,00</span>
+            </li>
+            <li>H2O Limoneto <span class="preco-produto">R$ 6,00</span></li>
+            <!-- Produtos adicionados pelo admin serão inseridos aqui -->
+            <div id="bebidas-admin"></div>
           </ul>
         </div>
       </div>
       <div class="extras">
         <h2>Refeições</h2>
         <ul>
-          <li>Sopa 250ml <span>R$ 10,00</span></li>
-          <li>Sopa 500ml <span>R$ 13,00</span></li>
-          <li>Cuscuz Recheado <span>R$ 13,00</span></li>
+          <li>Sopa 250ml <span class="preco-produto">R$ 10,00</span></li>
+          <li>Sopa 500ml <span class="preco-produto">R$ 13,00</span></li>
+          <li>Cuscuz Recheado <span class="preco-produto">R$ 13,00</span></li>
+          <!-- Produtos adicionados pelo admin serão inseridos aqui -->
         </ul>
       </div>
       <footer>
         <p>@LANCHONETE.SABORAMEZZA</p>
       </footer>
     </div>
+    <script src="./js/storage.js"></script>
+    <script>
+      // Verifica se está no modo admin
+      if (localStorage.getItem("adminLoggedIn") === "true") {
+        document.getElementById("admin-buttons").style.display = "flex";
+      }
+
+      // Função para fazer logout
+      function logout() {
+        localStorage.removeItem("adminLoggedIn");
+        location.reload();
+      }
+
+      // Função para formatar o preço
+      function formatarPreco(preco) {
+        return `R$ ${preco.toFixed(2).replace(".", ",")}`;
+      }
+
+      // Função para renderizar os produtos adicionados pelo admin
+      function renderizarProdutosAdmin() {
+        const produtos = getProdutos();
+        const lanchesAdmin = document.getElementById("lanches-admin");
+        const bebidasAdmin = document.getElementById("bebidas-admin");
+        const refeicoesUl = document.querySelector(".extras ul");
+
+        // Limpa as seções
+        lanchesAdmin.innerHTML = "";
+        bebidasAdmin.innerHTML = "";
+        Array.from(refeicoesUl.querySelectorAll(".admin-refeicao")).forEach(
+          (el) => el.remove()
+        );
+
+        // Adiciona os produtos em suas respectivas categorias
+        produtos.forEach((produto) => {
+          const item = document.createElement("li");
+          item.classList.add("admin-refeicao");
+          item.innerHTML = `
+            ${produto.nome}
+            <span class="preco-e-excluir">
+              <span class="preco-produto">${formatarPreco(produto.preco)}</span>
+              ${
+                localStorage.getItem("adminLoggedIn") === "true"
+                  ? `<button onclick="deletarProduto(${produto.id})" class="delete-btn">🗑️</button>`
+                  : ""
+              }
+            </span>
+          `;
+          switch (produto.categoria) {
+            case "LANCHES":
+              lanchesAdmin.appendChild(item);
+              break;
+            case "BEBIDAS":
+              bebidasAdmin.appendChild(item);
+              break;
+            case "REFEIÇÕES":
+              refeicoesUl.appendChild(item);
+              break;
+          }
+        });
+      }
+
+      // Adiciona botão de excluir em todos os itens fixos para admin
+      function adicionarBotaoExcluirEmTodosOsItens() {
+        if (localStorage.getItem("adminLoggedIn") === "true") {
+          document
+            .querySelectorAll(".itens li, .extras ul li")
+            .forEach((li) => {
+              if (!li.querySelector(".delete-btn")) {
+                // Encontra o span do preço
+                let precoSpan = li.querySelector(".preco-produto");
+                if (precoSpan) {
+                  // Cria o agrupador se não existir
+                  let precoEExcluir = precoSpan.parentNode;
+                  if (!precoEExcluir.classList.contains("preco-e-excluir")) {
+                    precoEExcluir = document.createElement("span");
+                    precoEExcluir.className = "preco-e-excluir";
+                    precoSpan.parentNode.insertBefore(precoEExcluir, precoSpan);
+                    precoEExcluir.appendChild(precoSpan);
+                  }
+                  // Cria o botão de excluir
+                  const btn = document.createElement("button");
+                  btn.className = "delete-btn";
+                  btn.innerHTML = "🗑️";
+                  btn.onclick = function () {
+                    if (confirm("Tem certeza que deseja excluir este item?")) {
+                      li.remove();
+                    }
+                  };
+                  precoEExcluir.appendChild(btn);
+                }
+              }
+            });
+        }
+      }
+
+      function salvarEdicao(id) {
+        const nome = document.getElementById(`nome-${id}`).value;
+        const preco = parseFloat(document.getElementById(`preco-${id}`).value);
+        if (nome && preco) {
+          updateProduto(id, { nome, preco });
+          alert("Produto atualizado!");
+          location.reload();
+        } else {
+          alert("Preencha todos os campos!");
+        }
+      }
+
+      // Função para deletar produto
+      function deletarProduto(id) {
+        if (confirm("Tem certeza que deseja excluir este produto?")) {
+          removeProduto(id);
+          alert("Produto excluído com sucesso!");
+          location.reload();
+        }
+      }
+
+      // Chama as funções ao carregar a página
+      document.addEventListener("DOMContentLoaded", () => {
+        renderizarProdutosAdmin();
+        adicionarBotaoExcluirEmTodosOsItens();
+      });
+    </script>
   </body>
 </html>

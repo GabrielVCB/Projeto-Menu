@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  user-select: none;
 }
 body {
   background: #fefefe;
@@ -50,11 +51,49 @@ body {
 .itens li {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 10px 0;
   border-bottom: 1px dashed #ccc;
 }
 
+.preco-e-excluir {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.nome-produto {
+  font-size: 18px;
+  color: #000;
+  font-weight: normal;
+}
+
+.preco-produto {
+  color: #c9952f;
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.delete-btn {
+  margin-left: 4px;
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 6px;
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+}
+
+.delete-btn:hover {
+  background-color: #cc0000;
+}
+
 .itens li span {
+  margin-right: 10px;
   color: #c9952f;
 }
 
@@ -99,4 +138,32 @@ footer p {
   width: 200px;
   display: block;
   margin: 0 auto;
+}
+
+.admin-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.admin-btn {
+  padding: 10px 24px;
+  background-color: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.08);
+  outline: none;
+  letter-spacing: 0.5px;
+}
+
+.admin-btn:hover {
+  background-color: #1769aa;
+  box-shadow: 0 4px 12px rgba(33, 150, 243, 0.15);
 }

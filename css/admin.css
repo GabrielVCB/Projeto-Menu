@@ -3,6 +3,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Inter", sans-serif;
+  user-select: none;
 }
 
 body {
@@ -48,6 +49,15 @@ body {
   margin-bottom: 1.5rem;
 }
 
+.form-inputs input {
+  padding: 15px 15px;
+  background-color: #fff;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 8px;
+}
+
 form input[type="text"],
 form input[type="number"] {
   padding: 15px 15px;
@@ -56,6 +66,16 @@ form input[type="number"] {
   border-radius: 8px;
   border: 1px solid #ccc;
   margin-top: 8px;
+}
+
+.form-inputs select {
+  padding: 15px 12px;
+  background-color: #fff;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 8px;
+  cursor: pointer;
 }
 
 .input-buttons {
@@ -78,6 +98,7 @@ form input[type="number"] {
   height: 45px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 .input-buttons button a {

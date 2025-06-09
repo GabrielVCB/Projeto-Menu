@@ -13,12 +13,9 @@
     />
   </head>
   <body>
-    <div id="admin-container"></div>
-
     <div class="main">
       <div class="form-admin">
         <h1>Modo Administrador</h1>
-
         <h2>Adicionar Produto</h2>
         <form id="add-form">
           <div class="form-inputs">
@@ -32,16 +29,30 @@
           </div>
           <div class="form-inputs">
             <label for="preco">Preço (R$)</label>
-            <input type="number" id="preco" placeholder="0,00" required />
+            <input
+              type="number"
+              id="preco"
+              placeholder="0,00"
+              step="0.01"
+              required
+            />
+          </div>
+          <div class="form-inputs">
+            <label for="categoria">Categoria</label>
+            <select id="categoria" required>
+              <option value="">Selecione uma categoria</option>
+              <option value="LANCHES">Lanches</option>
+              <option value="BEBIDAS">Bebidas</option>
+              <option value="REFEIÇÕES">Refeições</option>
+            </select>
+          </div>
+          <div class="input-buttons">
+            <button type="submit">Adicionar</button>
+            <button id="voltar" type="button">
+              <a href="index.html">Voltar ao Cardápio</a>
+            </button>
           </div>
         </form>
-
-        <div class="input-buttons">
-          <button type="submit">Adicionar</button>
-          <button id="voltar">
-            <a href="index.html">Voltar ao Cardápio</a>
-          </button>
-        </div>
       </div>
     </div>
     <script src="storage.js"></script>
