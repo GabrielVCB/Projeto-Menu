@@ -13,6 +13,14 @@
     />
   </head>
   <body>
+    <div class="login-admin-container" id="login-admin-container">
+      <button
+        onclick="window.location.href='admin-login.html'"
+        class="login-admin-btn"
+      >
+        Entrar como Admin
+      </button>
+    </div>
     <div class="admin-buttons" id="admin-buttons" style="display: none">
       <button onclick="window.location.href='admin.html'" class="admin-btn">
         Gerenciar Produtos
@@ -91,6 +99,14 @@
     </div>
     <script src="./js/storage.js"></script>
     <script>
+      // Esconde o botão de login admin se já estiver logado como admin
+      if (localStorage.getItem("adminLoggedIn") === "true") {
+        var loginAdminContainer = document.getElementById(
+          "login-admin-container"
+        );
+        if (loginAdminContainer) loginAdminContainer.style.display = "none";
+      }
+
       // Verifica se está no modo admin
       if (localStorage.getItem("adminLoggedIn") === "true") {
         document.getElementById("admin-buttons").style.display = "flex";
