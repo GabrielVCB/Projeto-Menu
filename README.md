@@ -3,7 +3,7 @@
 Bem-vindo ao repositório do **Cardápio Digital da Lanchonete Sabor a Mezza**!  
 Este projeto tem como objetivo modernizar o atendimento da lanchonete, oferecendo aos clientes uma maneira prática de visualizar o cardápio através de um **QR code**, enquanto o administrador pode **gerenciar os itens do cardápio** de forma simples e segura por meio de um painel exclusivo.
 
-🌐 **Acesse o cardápio online:**  [Menu](https://projeto-menu-xi.vercel.app/)
+🌐 **Acesse o cardápio online:** [Menu](https://projeto-menu-xi.vercel.app/)
 
 ---
 
@@ -108,9 +108,25 @@ Ideal para pequenos comércios que desejam oferecer um atendimento moderno e dig
 
 ## 🛠 Estrutura do Projeto
 
-- `index.html`: Menu
-- `index.css`: Estilo das página
-- `logonome.jng`: Imagem da logo
+- `index.html`: Página principal do cardápio (visão do cliente)
+
+- `index.css`: Estilos da página do cardápio
+
+- `admin.html`: Página de administração (adicionar produtos)
+
+- `admin-login.html`: Página de login do administrador
+
+- `admin.css:` Estilos aplicados à página de login do administrador e à interface de adição de produtos
+
+- `js/admin.js`: Lógica da página de administração
+
+- `js/admin-login.js`: Validação e controle de login do admin
+
+- `js/storage.js`: Manipulação de armazenamento local (localStorage)
+
+- `bancodedados.sql`: Estrutura inicial do banco de dados (caso esteja usando)
+
+- `assets/images`: Imagens usadas no projeto e no readme
 
 ---
 
@@ -123,6 +139,7 @@ Ideal para pequenos comércios que desejam oferecer um atendimento moderno e dig
 </p>
 
 ## Menu
+
 <p align="center">
   <img src="assets/images/Menu.png" alt="Menu" width="400"/>
 </p>
@@ -130,7 +147,8 @@ Ideal para pequenos comércios que desejam oferecer um atendimento moderno e dig
 ---
 
 ## Issue / bug tracker
-  No começo, foi encontrada uma dificuldade na primeira versão do projeto, no que se diz a exibição e edição do cardápio online. Foi utilizado a tecnologia de localStorage, que mais tarde se tornou ineficiente de acordo com o objetivo do projeto, já que é proposto a manipulação direta do menu que é público, visto que o localStorage só interfere na máquina local.
+
+No começo, foi encontrada uma dificuldade na primeira versão do projeto, no que se diz a exibição e edição do cardápio online. Foi utilizado a tecnologia de localStorage, que mais tarde se tornou ineficiente de acordo com o objetivo do projeto, já que é proposto a manipulação direta do menu que é público, visto que o localStorage só interfere na máquina local.
 
 ---
 
