@@ -147,6 +147,8 @@ Ideal para pequenos comércios que desejam oferecer um atendimento moderno e dig
 
 No começo, foi encontrada uma dificuldade na primeira versão do projeto, no que se diz a exibição e edição do cardápio online. Foi utilizado a tecnologia de localStorage, que mais tarde se tornou ineficiente de acordo com o objetivo do projeto, já que é proposto a manipulação direta do menu que é público, visto que o localStorage só interfere na máquina local.
 
+No decorrer do desenvolvimento, foi identificada uma limitação relacionada à hospedagem do projeto. Inicialmente, apenas o cardápio estava hospedado online, e não havia uma forma direta de acessar o login do modo administrador. Para contornar essa situação, foi necessário adicionar um botão na interface do cardápio público que redirecionasse para a tela de login, permitindo assim o acesso ao ambiente de administração. Essa adaptação garantiu que ambas as funcionalidades, visualização do cardápio e modo administrativo, estivessem disponíveis de forma integrada e acessível na versão final hospedada do projeto.
+
 ---
 
 ## Evidência de programação em pares
