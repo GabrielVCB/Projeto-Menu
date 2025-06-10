@@ -190,6 +190,25 @@
         adicionarBotaoEditarExcluirEmTodosOsItens();
       }
 
+      // Função para verificar e esconder produtos excluídos
+      function verificarProdutosExcluidos() {
+        const produtosExcluidos = JSON.parse(
+          localStorage.getItem("produtosExcluidos") || "[]"
+        );
+        document.querySelectorAll(".itens li, .extras ul li").forEach((li) => {
+          const produtoId = getProdutoId(li);
+          if (produtosExcluidos.includes(produtoId)) {
+            li.style.display = "none";
+          }
+        });
+      }
+
+      // Chama a função para verificar produtos excluídos quando a página carrega
+      document.addEventListener("DOMContentLoaded", function () {
+        verificarProdutosExcluidos();
+        renderizarProdutosAdmin();
+      });
+
       // Adiciona botão de editar e excluir em todos os itens fixos para admin
       function adicionarBotaoEditarExcluirEmTodosOsItens() {
         if (localStorage.getItem("adminLoggedIn") === "true") {
@@ -355,27 +374,6 @@
           location.reload();
         }
       }
-
-      // No início do script, ao carregar a página, oculte os produtos fixos excluídos
-      document.addEventListener("DOMContentLoaded", () => {
-        // Oculta produtos fixos excluídos imediatamente
-        const produtosExcluidos = JSON.parse(
-          localStorage.getItem("produtosExcluidos") || "[]"
-        );
-        console.log(
-          "Produtos excluídos salvos no localStorage (ao carregar):",
-          produtosExcluidos
-        );
-        document.querySelectorAll(".itens li, .extras ul li").forEach((li) => {
-          const produtoId = getProdutoId(li);
-          console.log("Verificando produto ao carregar:", produtoId);
-          if (produtosExcluidos.includes(produtoId)) {
-            li.style.display = "none";
-          }
-        });
-        renderizarProdutosAdmin();
-        adicionarBotaoEditarExcluirEmTodosOsItens();
-      });
     </script>
   </body>
 </html>

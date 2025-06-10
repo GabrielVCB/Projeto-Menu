@@ -11,6 +11,33 @@
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
       rel="stylesheet"
     />
+    <style>
+      .password-container {
+        position: relative;
+        width: 100%;
+      }
+      .password-container input[type="password"],
+      .password-container input[type="text"] {
+        width: 100%; /* Ocupa a largura total do container */
+        box-sizing: border-box; /* Inclui padding e borda na largura total */
+        padding-right: 40px; /* Espaço para o botão */
+      }
+      .toggle-password {
+        position: absolute;
+        right: 10px;
+        top: 55%;
+        transform: translateY(-50%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        font-size: 16px;
+        z-index: 10; /* Garante que o botão fique sobre o input */
+      }
+      .form-inputs {
+        width: 100%; /* Garante que o container do input também ocupe 100% */
+      }
+    </style>
   </head>
   <body>
     <div class="main">
@@ -28,12 +55,21 @@
           </div>
           <div class="form-inputs">
             <label for="password">Senha</label>
-            <input
-              type="password"
-              id="password"
-              placeholder="Digite sua senha"
-              required
-            />
+            <div class="password-container">
+              <input
+                type="password"
+                id="password"
+                placeholder="Digite sua senha"
+                required
+              />
+              <button
+                type="button"
+                class="toggle-password"
+                onclick="togglePassword()"
+              >
+                👁️
+              </button>
+            </div>
           </div>
           <div class="input-buttons">
             <button type="submit">Entrar</button>
@@ -44,6 +80,20 @@
         </form>
       </div>
     </div>
+    <script>
+      function togglePassword() {
+        const passwordInput = document.getElementById("password");
+        const toggleButton = document.querySelector(".toggle-password");
+
+        if (passwordInput.type === "password") {
+          passwordInput.type = "text";
+          toggleButton.textContent = "👁️‍🗨️";
+        } else {
+          passwordInput.type = "password";
+          toggleButton.textContent = "👁️";
+        }
+      }
+    </script>
     <script src="./js/admin-login.js"></script>
   </body>
 </html>
