@@ -50,14 +50,12 @@ Ideal para pequenos comércios que desejam oferecer um atendimento moderno e dig
 - Acesso ao cardápio escaneando um QR code.
 - Visualização dos itens com nome, descrição, preço.
 - Navegação por categorias (lanches, bebidas, sobremesas etc.).
-- Indicação de itens indisponíveis.
 
 ### Administrador
 
 - Login para acesso seguro ao painel administrativo.
 - Adição de novos produtos ao cardápio.
 - Edição de informações dos itens (nome, descrição, preço).
-- Remoção ou desativação temporária de itens.
 - Organização dos produtos por categoria.
 
 ---
@@ -68,12 +66,12 @@ Ideal para pequenos comércios que desejam oferecer um atendimento moderno e dig
 2. Como cliente, quero ver a descrição e o preço de cada item para escolher com mais segurança.
 3. Como cliente, quero acessar o cardápio escaneando um QR code para facilitar o acesso pelo celular.
 4. Como cliente, quero visualizar categorias separadas (ex: lanches, bebidas, sobremesas) para encontrar os produtos mais facilmente.
-5. Como cliente, quero saber se um item está indisponível para não perder tempo escolhendo algo que não posso pedir.
+5. Como cliente, quero acessar o cardápio online para poupar tempo de atendimento.
 6. Como administrador, quero adicionar novos itens ao cardápio para manter o menu sempre atualizado.
-7. Como administrador, quero editar as informações de um item (nome, descrição, preço) para corrigir ou atualizar dados.
+7. Como administrador, quero editar as informações de um item (nome e preço) para corrigir ou atualizar dados.
 8. Como administrador, quero remover itens do cardápio quando não estiverem mais disponíveis.
 9. Como administrador, quero acessar o painel de administração com login e senha para garantir a segurança das edições.
-10. Como administrador, quero ativar ou desativar um item do cardápio para controlar a disponibilidade sem excluir o item.
+10. Como administrador, quero poupar tempo ao disponibilizar o cardápio via qrcode.
 
 ---
 
@@ -85,7 +83,6 @@ Ideal para pequenos comércios que desejam oferecer um atendimento moderno e dig
 - Login de administrador.
 - Cadastro, edição e exclusão de itens.
 - Classificação por categoria.
-- Indicação de disponibilidade.
 
 ### Requisitos Não Funcionais
 
