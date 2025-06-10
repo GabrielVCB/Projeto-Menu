@@ -92,6 +92,25 @@ body {
   background-color: #cc0000;
 }
 
+.edit-btn {
+  margin-left: 4px;
+  background-color: #2196f3;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 6px;
+  display: inline-flex;
+  align-items: center;
+  height: 24px;
+  transition: background 0.2s;
+}
+
+.edit-btn:hover {
+  background-color: #1769aa;
+}
+
 .itens li span {
   margin-right: 10px;
   color: #c9952f;

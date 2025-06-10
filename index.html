@@ -123,6 +123,33 @@
         return `R$ ${preco.toFixed(2).replace(".", ",")}`;
       }
 
+      // Função para obter um ID único para o produto (nome + preço formatado)
+      function getProdutoId(li) {
+        let nomeContent = "";
+        const children = Array.from(li.childNodes);
+        for (const child of children) {
+          if (child.nodeType === Node.TEXT_NODE) {
+            nomeContent += child.nodeValue;
+          } else if (
+            child.nodeType === Node.ELEMENT_NODE &&
+            (child.classList.contains("preco-e-excluir") ||
+              child.classList.contains("preco-produto"))
+          ) {
+            // Parar de coletar nome se encontrar o span de preço ou seu container
+            break;
+          }
+        }
+        const nome = nomeContent.trim().toLowerCase();
+
+        const precoSpan = li.querySelector(".preco-produto");
+        const preco = precoSpan
+          ? precoSpan.textContent.replace("R$", "").replace(",", ".").trim()
+          : "";
+
+        console.log("getProdutoId gerado:", nome + "|" + preco);
+        return nome + "|" + preco;
+      }
+
       // Função para renderizar os produtos adicionados pelo admin
       function renderizarProdutosAdmin() {
         const produtos = getProdutos();
@@ -141,15 +168,11 @@
         produtos.forEach((produto) => {
           const item = document.createElement("li");
           item.classList.add("admin-refeicao");
+          item.setAttribute("data-id", produto.id);
           item.innerHTML = `
             ${produto.nome}
             <span class="preco-e-excluir">
               <span class="preco-produto">${formatarPreco(produto.preco)}</span>
-              ${
-                localStorage.getItem("adminLoggedIn") === "true"
-                  ? `<button onclick="deletarProduto(${produto.id})" class="delete-btn">🗑️</button>`
-                  : ""
-              }
             </span>
           `;
           switch (produto.categoria) {
@@ -164,14 +187,25 @@
               break;
           }
         });
+        adicionarBotaoEditarExcluirEmTodosOsItens();
       }
 
-      // Adiciona botão de excluir em todos os itens fixos para admin
-      function adicionarBotaoExcluirEmTodosOsItens() {
+      // Adiciona botão de editar e excluir em todos os itens fixos para admin
+      function adicionarBotaoEditarExcluirEmTodosOsItens() {
         if (localStorage.getItem("adminLoggedIn") === "true") {
           document
             .querySelectorAll(".itens li, .extras ul li")
             .forEach((li) => {
+              // Verifica se o produto já foi excluído
+              const produtoId = getProdutoId(li);
+              const produtosExcluidos = JSON.parse(
+                localStorage.getItem("produtosExcluidos") || "[]"
+              );
+              if (produtosExcluidos.includes(produtoId)) {
+                li.style.display = "none";
+                return;
+              }
+              // Evita adicionar botão duplicado
               if (!li.querySelector(".delete-btn")) {
                 // Encontra o span do preço
                 let precoSpan = li.querySelector(".preco-produto");
@@ -185,15 +219,116 @@
                     precoEExcluir.appendChild(precoSpan);
                   }
                   // Cria o botão de excluir
-                  const btn = document.createElement("button");
-                  btn.className = "delete-btn";
-                  btn.innerHTML = "🗑️";
-                  btn.onclick = function () {
+                  const btnDel = document.createElement("button");
+                  btnDel.className = "delete-btn";
+                  btnDel.innerHTML = "🗑️";
+                  btnDel.onclick = function () {
                     if (confirm("Tem certeza que deseja excluir este item?")) {
-                      li.remove();
+                      // Se for produto fixo, salva no localStorage
+                      if (!li.classList.contains("admin-refeicao")) {
+                        const excluidos = JSON.parse(
+                          localStorage.getItem("produtosExcluidos") || "[]"
+                        );
+                        const idParaExcluir = getProdutoId(li);
+                        console.log(
+                          "Salvando no localStorage para excluir:",
+                          idParaExcluir
+                        );
+                        excluidos.push(idParaExcluir);
+                        localStorage.setItem(
+                          "produtosExcluidos",
+                          JSON.stringify(excluidos)
+                        );
+                        li.style.display = "none";
+                      } else {
+                        // Para produtos adicionados pelo admin, remove do localStorage (já implementado)
+                        const id = parseInt(li.getAttribute("data-id"));
+                        removeProduto(id); // Função do storage.js
+                        alert("Produto excluído com sucesso!");
+                        li.remove();
+                      }
                     }
                   };
-                  precoEExcluir.appendChild(btn);
+                  // Cria o botão de editar
+                  const btnEdit = document.createElement("button");
+                  btnEdit.className = "edit-btn";
+                  btnEdit.innerHTML = "✏️";
+                  btnEdit.style.marginLeft = "4px";
+                  btnEdit.onclick = function () {
+                    // Troca para modo edição
+                    const nomeAntigo = li.childNodes[0].nodeValue.trim();
+                    const precoAntigo = precoSpan.textContent
+                      .replace("R$", "")
+                      .replace(",", ".")
+                      .trim();
+                    li.innerHTML = "";
+                    const inputNome = document.createElement("input");
+                    inputNome.type = "text";
+                    inputNome.value = nomeAntigo;
+                    inputNome.style.width = "120px";
+                    inputNome.className = "edit-nome";
+                    const precoEExcluirEdit = document.createElement("span");
+                    precoEExcluirEdit.className = "preco-e-excluir";
+                    const inputPreco = document.createElement("input");
+                    inputPreco.type = "number";
+                    inputPreco.value = precoAntigo;
+                    inputPreco.step = "0.01";
+                    inputPreco.style.width = "60px";
+                    inputPreco.className = "edit-preco";
+                    const btnSalvar = document.createElement("button");
+                    btnSalvar.className = "edit-btn";
+                    btnSalvar.innerHTML = "💾";
+                    btnSalvar.style.marginLeft = "4px";
+                    btnSalvar.onclick = function () {
+                      const novoNome = inputNome.value.trim();
+                      const novoPreco = parseFloat(inputPreco.value);
+                      if (novoNome && novoPreco) {
+                        // Se for produto do admin (tem class admin-refeicao), salva no localStorage
+                        if (li.classList.contains("admin-refeicao")) {
+                          const produtos = getProdutos();
+                          const id = parseInt(li.getAttribute("data-id"));
+                          const idx = produtos.findIndex((p) => p.id === id);
+                          if (idx !== -1) {
+                            produtos[idx].nome = novoNome;
+                            produtos[idx].preco = novoPreco;
+                            localStorage.setItem(
+                              "produtos",
+                              JSON.stringify(produtos)
+                            );
+                          }
+                        }
+                        // Atualiza visualmente
+                        li.innerHTML = `${novoNome}<span class="preco-e-excluir"><span class="preco-produto">${formatarPreco(
+                          novoPreco
+                        )}</span></span>`;
+                        adicionarBotaoEditarExcluirEmTodosOsItens();
+                      } else {
+                        alert("Preencha todos os campos!");
+                      }
+                    };
+                    precoEExcluirEdit.appendChild(inputPreco);
+                    precoEExcluirEdit.appendChild(btnSalvar);
+                    precoEExcluirEdit.appendChild(btnDel);
+                    li.appendChild(inputNome);
+                    li.appendChild(precoEExcluirEdit);
+                  };
+                  precoEExcluir.appendChild(btnEdit);
+                  precoEExcluir.appendChild(btnDel);
+                  // Se for produto do admin, marca o li com data-id
+                  if (li.classList.contains("admin-refeicao")) {
+                    const produtos = getProdutos();
+                    const nomeLi = li.childNodes[0].nodeValue.trim();
+                    const precoLi = precoSpan.textContent
+                      .replace("R$", "")
+                      .replace(",", ".")
+                      .trim();
+                    const prod = produtos.find(
+                      (p) =>
+                        p.nome === nomeLi &&
+                        parseFloat(p.preco) == parseFloat(precoLi)
+                    );
+                    if (prod) li.setAttribute("data-id", prod.id);
+                  }
                 }
               }
             });
@@ -221,10 +356,25 @@
         }
       }
 
-      // Chama as funções ao carregar a página
+      // No início do script, ao carregar a página, oculte os produtos fixos excluídos
       document.addEventListener("DOMContentLoaded", () => {
+        // Oculta produtos fixos excluídos imediatamente
+        const produtosExcluidos = JSON.parse(
+          localStorage.getItem("produtosExcluidos") || "[]"
+        );
+        console.log(
+          "Produtos excluídos salvos no localStorage (ao carregar):",
+          produtosExcluidos
+        );
+        document.querySelectorAll(".itens li, .extras ul li").forEach((li) => {
+          const produtoId = getProdutoId(li);
+          console.log("Verificando produto ao carregar:", produtoId);
+          if (produtosExcluidos.includes(produtoId)) {
+            li.style.display = "none";
+          }
+        });
         renderizarProdutosAdmin();
-        adicionarBotaoExcluirEmTodosOsItens();
+        adicionarBotaoEditarExcluirEmTodosOsItens();
       });
     </script>
   </body>
